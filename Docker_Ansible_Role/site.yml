@@ -1,0 +1,12 @@
+---
+
+# site.yml
+
+- name: Docker installation
+  hosts: all
+  remote_user: stack
+  become: true
+
+  roles:
+    - role: "docker_installation"
+      tags: ["docker"]

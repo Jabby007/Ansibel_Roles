@@ -1,0 +1,22 @@
+---
+ansible:
+  playbook: tests/playbook.yml
+#  verbose: vvv
+driver:
+  name: docker
+verifier:
+  name: testinfra
+docker:
+  containers:
+  - name: node01
+    image: jpetazzo/dind
+    image_version: latest
+    privileged: True
+  - name: node02
+    image: jpetazzo/dind
+    image_version: latest
+    privileged: True
+  - name: node03
+    image: jpetazzo/dind
+    image_version: latest
+    privileged: True

@@ -1,0 +1,24 @@
+---
+- name: Set cassandra address
+  set_fact:
+    cassandra_address: "{{ hostvars[inventory_hostname]['ansible_' + cassandra_interface]['ipv4']['address'] }}"
+  when: cassandra_address is undefined
+
+- name: Check if cluster has odd number of hosts
+  fail:
+    msg: "The number of hosts in inventory MUST NOT be even"
+  when: ansible_play_hosts | length is even
+
+- name: Check if cassandra_alter_password variable is set to perform configuration
+  fail:
+    msg: "cassandra_alter_password must be set!"
+  when:
+    - cassandra_alter_password == ""
+
+- include: install.yml
+
+- include: tests.yml
+  when:
+    - container.changed
+
+- include: auth.yml

@@ -1,0 +1,5 @@
+---
+- hosts: 10.72.6.102
+  remote_user: stack
+  roles:
+    - ansible-role-artifactory

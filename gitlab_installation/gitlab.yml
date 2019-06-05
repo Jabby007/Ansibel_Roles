@@ -1,0 +1,8 @@
+---
+- hosts: 10.72.6.102
+  become: true
+  user: stack
+  vars:
+    ansible_python_interpreter: "/usr/bin/env python2.7"
+  roles:
+    - gitlab_installation

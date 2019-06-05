@@ -1,0 +1,28 @@
+---
+
+- name: Install Jenkins CI on Docker
+  hosts: 10.72.6.102
+  become: yes
+
+  vars:
+    ansible_python_interpreter: "/usr/bin/env python2.7"      
+    jenkins_platform: Docker
+    jenkins_install_via: "docker"
+    jenkins_admin_username: "admin"
+    jenkins_admin_password: "admin1234"
+    jenkins_admin_fullname: "administrator"
+    jenkins_users:
+      - { username: "{{ jenkins_admin_username }}", password: "{{ jenkins_admin_password }}", fullname: "{{ jenkins_admin_fullname }}" }
+      - { username: dlpune, password: dlpune@123, fullname: DigitalLabPune }
+        #        jenkins_plugins:
+        # - blueocean
+        # - git
+        # - gogs-webhook
+        #- job-dsl
+        #- workflow-aggregator
+        #    jenkins_jobs:
+        #- { name: my-awesome-job, config: "{{ lookup('file', 'files/jobs/test-job-config.xml') }}" }
+        #- { name: my-cool-job, config: "{{ lookup('file', 'files/jobs/test-job-config.xml') }}" }
+
+  roles:
+    - jenkins_installation

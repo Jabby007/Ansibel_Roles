@@ -1,0 +1,10 @@
+---
+
+- name: Check running docker container
+  hosts: localhost
+  vars:
+    gitlab_container_options_name: "gitlab-test"
+  tasks:
+    - name: Run on the scratch
+      include_role:
+        name: app

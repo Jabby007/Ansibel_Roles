@@ -1,0 +1,14 @@
+---
+#docker conf
+#cassandra_data_dir: /opt/cassandra/data
+#cassandra_config_dir: /opt/cassandra/conf
+cassandra_version: 3.0
+
+#config
+cassandra_cluster_name: "Cassandra Cluster"
+cassandra_interface: "{{ ansible_default_ipv4.interface }}"
+cassandra_num_tokens: 256
+
+cassandra_system_user: cassandra
+cassandra_system_group: cassandra
+cassandra_alter_password: ""
